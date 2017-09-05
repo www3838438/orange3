@@ -23,7 +23,7 @@ class OWNNLearner(OWBaseLearner):
     solv_lbl = ["L-BFGS-B", "SGD", "Adam"]
 
     learner_name = Setting("Neural Network")
-    hidden_layers_input = Setting("100")
+    hidden_layers_input = Setting("100,")
     activation_index = Setting(3)
     solver_index = Setting(2)
     alpha = Setting(0.0001)
@@ -35,7 +35,8 @@ class OWNNLearner(OWBaseLearner):
             box, self, "hidden_layers_input", label="Neurons per hidden layer:",
             orientation=Qt.Horizontal, callback=self.settings_changed,
             tooltip="A list of integers defining neurons. Length of list "
-                    "defines the number of layers. E.g. 4, 2, 2, 3.")
+                    "defines the number of layers. E.g. 4, 2, 2, 3.",
+            placeholderText="e.g. 100,")
         self.activation_combo = gui.comboBox(
             box, self, "activation_index", orientation=Qt.Horizontal,
             label="Activation:", items=[i for i in self.act_lbl],
@@ -74,7 +75,7 @@ class OWNNLearner(OWBaseLearner):
         layers = tuple(map(int, re.findall('\d+', self.hidden_layers_input)))
         if not layers:
             layers = (100,)
-            self.hidden_layers_edit.setText("100")
+            self.hidden_layers_edit.setText("100,")
         return layers
 
 
