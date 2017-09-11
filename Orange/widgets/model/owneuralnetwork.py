@@ -72,7 +72,7 @@ class OWNNLearner(OWBaseLearner):
                 ("Max iterations", self.max_iterations))
 
     def get_hidden_layers(self):
-        layers = tuple(map(int, re.findall('\d+', self.hidden_layers_input)))
+        layers = tuple(map(int, re.findall(r'\d+', self.hidden_layers_input)))
         if not layers:
             layers = (100,)
             self.hidden_layers_edit.setText("100,")
