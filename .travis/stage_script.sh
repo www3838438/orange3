@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 if [ "$RUN_PYLINT" ]; then
     cd $TRAVIS_BUILD_DIR
